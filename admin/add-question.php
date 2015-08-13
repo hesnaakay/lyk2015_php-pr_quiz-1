@@ -9,7 +9,7 @@ if($_POST){
     // veriyi yazacağımız dosya yolu
     $questionsDataFilePath = "../data/questions.txt";
     $message = "Soru eklenemedi";
-
+if (!(empty($_POST['question']) && !empty($_POST['options']))) {
     // eski sorulara yenisini ekliyoruz
     array_push($questions, $_POST);
 
@@ -25,6 +25,7 @@ if($_POST){
     if(fwrite($questionsDataFile, $encodedQuestions))
         $message = "Soru eklendi.";
     fclose($questionsDataFile);
+}
 }
 ?>
 <?php include("../inc/header.php"); ?>
